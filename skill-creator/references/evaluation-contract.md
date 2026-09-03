@@ -13,7 +13,14 @@ An infrastructure failure is never a negative behavioral observation. Record `PA
 
 ## Before running
 
-Create an immutable corpus in the target skill's `evals/evals.json`, with stable case IDs, positive and negative routing cases, expected observable outcomes, assertion IDs, a corpus hash, and a snapshot/hash of the candidate and baseline. `skill-creator` intentionally has no fixed corpus because it creates and evaluates the corpus for the target skill. Record client, client version, model, command, permissions, timestamp, and run directory.
+Create an immutable corpus in the target skill's `evals/evals.json`, using the
+[documented schema](schemas.md#evalsjson): stable case IDs, prompts, expected
+observable outcomes, verifiable expectations, and optional fixture files.
+Before each experiment, record the corpus hash and a snapshot/hash of the
+candidate and baseline. `skill-creator` intentionally has no fixed corpus
+because it creates and evaluates the corpus for the target skill. Record
+client, client version, model, command, permissions, timestamp, and run
+directory.
 
 Use a baseline: no skill for a new capability; the pre-change snapshot for an improvement. Randomize A/B labels before blind qualitative comparison. Never show the grader which version produced an output.
 
@@ -21,7 +28,12 @@ Use a baseline: no skill for a new capability; the pre-change snapshot for an im
 
 For a consequential shared skill, run at least three cold repetitions per client and case. Report routing precision/recall, completed-case outcome rate, median and spread for cost, and infrastructure completion rate separately. Do not declare a gain from one run, a changed corpus, unknown model, or a result that only passes superficial assertions.
 
-Use deterministic assertions whenever possible. LLM grading must cite the output evidence, critique weak assertions, and be treated as judgment—not ground truth. Preserve raw outputs and grader inputs beside the summary.
+Use deterministic assertions whenever possible. LLM grading must cite the
+output evidence, critique weak assertions, and be treated as judgment—not
+ground truth. Preserve raw outputs and grader inputs beside the summary in the
+access-controlled run directory. For a public repository, commit only
+sanitized evidence, hashes, and aggregate grades; never publish credentials,
+private context, or user-specific filesystem paths from raw client logs.
 
 ## Apply the evaluation roles
 

@@ -1,9 +1,12 @@
 # SEO measurement contract
 
-Every shipped change needs a structured audit record containing canonical URL,
-query family, one owner, page hash, change type, baseline and comparison
-window, evidence manifest, attribution metrics when available, exact change or
-content hash, deployment date, cannibalization guardrail, and result.
+This file is the sole authority for SEO change audit records. Create a durable
+record when a proposed change is accepted for implementation, then update that
+same record when the change ships and at every measurement checkpoint. It must
+contain canonical URL, query family, one owner, page hash, change type,
+baseline and comparison window, evidence manifest, attribution metrics when
+available, exact change or content hash, deployment date when known,
+cannibalization guardrail, and result.
 
 The record has three checkpoints:
 

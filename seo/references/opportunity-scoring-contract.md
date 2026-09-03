@@ -24,14 +24,9 @@ decay-driven edit.
 
 ## Audit record
 
-The persistence owner must store one record per proposed or accepted change:
-
-- canonical owner and owner work item;
-- page hash and change type;
-- query family, source manifest, score components, and confidence;
-- baseline and comparison cohorts;
-- attribution metrics when available; and
-- 14-, 28-, and 56-day checkpoints and lifecycle outcome.
+The [measurement contract](measurement-contract.md) owns audit-record timing,
+base fields, and checkpoints. For a ranked opportunity, add the ordering-score
+components and evidence-confidence value to that record.
 
 The audit runner is read-only. It may propose a bounded edit, but cannot write
 content, metadata, or indexing state.

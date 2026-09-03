@@ -33,8 +33,17 @@ mkdir -p .agents/skills
 ln -s ../../.claude/skills/seo .agents/skills/seo
 ```
 
-Use the same pattern for any other directory in this repository. The latest
-packaged archives are available from the [releases page](https://github.com/iwo-szapar/second-brain-skills/releases/latest).
+Use the same pattern for any other directory in this repository. Release pages
+list the packaged skill archives actually available for that version. To build
+an archive from the current source, run:
+
+```bash
+python3 skill-creator/scripts/package_skill.py seo ./dist
+```
+
+Packaged archives include bundle files except root `evals/`, `__pycache__/`,
+`node_modules/`, `*.pyc`, and `.DS_Store`. Evaluation corpora stay in the
+source repository and are intentionally excluded from `.skill` archives.
 
 ## Use it
 
@@ -51,6 +60,22 @@ The included portable validator uses only the Python standard library:
 python3 skill-creator/scripts/quick_validate.py seo --target portable
 ```
 
+This checks portable metadata, local links, Codex metadata, and the optional
+`evals/evals.json` schema. It does not claim that model behavior has been
+evaluated; behavioral runs must follow the evaluation contract in
+`skill-creator/references/evaluation-contract.md`.
+
+Run a corpus case through an installed client with:
+
+```bash
+python3 skill-creator/scripts/run_client_eval.py \
+  --client codex \
+  --workspace /path/to/empty-isolated-workspace \
+  --skill-directory seo \
+  --evals-file seo/evals/evals.json \
+  --eval-id 1 \
+  --output-dir /path/to/run/eval-1
+```
 
 ## Repository layout
 
@@ -60,7 +85,7 @@ seo/                       # Evidence-backed, read-only SEO decision layer
   SKILL.md                 # Portable entry point
   agents/openai.yaml       # Codex metadata only
   references/              # Decision and evidence contracts
-  evals/                   # Regression fixtures
+  evals/                   # Behavior evaluation corpus
 ```
 
 ## License
