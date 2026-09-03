@@ -90,7 +90,7 @@ Read only the adapter for the active client when executing or testing workflows:
 ## Supporting references
 
 - [Authoring](references/authoring.md) — structure, scope, and implementation guidance.
-- [Evaluation contract](references/evaluation-contract.md) — real-client experiments, baselines, graders, and reporting.
+- [Evaluation contract](references/evaluation-contract.md) — real-client experiments, baselines, portable evaluation roles, and reporting.
 - [Portability](references/portability.md) — shared core, runtime-specific metadata, plugins, and installation.
 - [Security](references/security.md) — safe scripts, untrusted bundles, and viewer constraints.
 - [Schemas](references/schemas.md) — artifact contracts for legacy and benchmark tooling.

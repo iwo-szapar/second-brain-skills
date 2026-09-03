@@ -47,7 +47,7 @@ The portable validator uses only the Python standard library:
 python3 skill-creator/scripts/quick_validate.py skill-creator
 ```
 
-For consequential skills, use the evaluation contract before claiming a quality or routing improvement. It separates completed behavior from authentication, timeout, and parser failures so the resulting evidence remains useful.
+For consequential skills, use the evaluation contract before claiming a quality or routing improvement. It creates `evals/evals.json` in the target skill, then separates completed behavior from authentication, timeout, and parser failures. The bundle includes portable guides for evidence grading, blind comparison, and benchmark analysis.
 
 ## Repository layout
 
@@ -56,6 +56,7 @@ skill-creator/
   SKILL.md                 # Entry point and workflow
   agents/openai.yaml       # Codex metadata only, not a runnable agent
   references/              # Authoring, portability, safety, and evaluation guidance
+  references/evaluation-roles/ # Portable grading, comparison, and analysis guides
   scripts/                 # Validation, packaging, and evaluation helpers
   assets/                  # Review-page template
   eval-viewer/             # Local results viewer
