@@ -27,6 +27,7 @@ open_owner_records:
 smallest_justified_action:
 status: proposed | deferred | blocked-by-evidence | not-needed
 blocked_gates:
+retry_condition:
 ```
 
 The audit is successful when it makes the current operating state legible and

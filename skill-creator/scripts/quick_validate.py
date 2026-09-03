@@ -8,7 +8,7 @@ import ast
 import json
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 
@@ -164,6 +164,69 @@ def _validate_bundle_paths(skill_root: Path, body: str, errors: list[str]) -> No
             errors.append(f"missing linked file: {raw_target}")
 
 
+def _validate_evals(skill_root: Path, errors: list[str]) -> None:
+    evals_path = skill_root / "evals" / "evals.json"
+    if not evals_path.exists():
+        return
+    try:
+        data = json.loads(evals_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"evals/evals.json is invalid JSON: {exc}")
+        return
+    if not isinstance(data, dict):
+        errors.append("evals/evals.json must contain a JSON object")
+        return
+    if data.get("skill_name") != skill_root.name:
+        errors.append("evals/evals.json skill_name must match the skill directory")
+    evals = data.get("evals")
+    if not isinstance(evals, list) or not evals:
+        errors.append("evals/evals.json requires a non-empty evals list")
+        return
+
+    seen_ids: set[int] = set()
+    resolved_root = skill_root.resolve()
+    for index, case in enumerate(evals):
+        label = f"evals[{index}]"
+        if not isinstance(case, dict):
+            errors.append(f"{label} must be an object")
+            continue
+        case_id = case.get("id")
+        if not isinstance(case_id, int) or isinstance(case_id, bool):
+            errors.append(f"{label}.id must be an integer")
+        elif case_id in seen_ids:
+            errors.append(f"{label}.id must be unique")
+        else:
+            seen_ids.add(case_id)
+        for field in ("prompt", "expected_output"):
+            if not isinstance(case.get(field), str) or not case[field].strip():
+                errors.append(f"{label}.{field} must be a non-empty string")
+        expectations = case.get("expectations")
+        if not isinstance(expectations, list) or not expectations or not all(
+            isinstance(item, str) and item.strip() for item in expectations
+        ):
+            errors.append(f"{label}.expectations must be a non-empty list of strings")
+        files = case.get("files", [])
+        if not isinstance(files, list) or not all(isinstance(item, str) for item in files):
+            errors.append(f"{label}.files must be a list of relative paths")
+            continue
+        for raw_path in files:
+            relative_path = Path(raw_path)
+            raw_parts = raw_path.replace("\\", "/").split("/")
+            if (
+                relative_path.is_absolute()
+                or PureWindowsPath(raw_path).is_absolute()
+                or not raw_path
+                or any(part in {"", ".", ".."} for part in raw_parts)
+            ):
+                errors.append(f"{label}.files path must be relative: {raw_path}")
+                continue
+            file_path = (skill_root / raw_path).resolve()
+            if not _inside(resolved_root, file_path):
+                errors.append(f"{label}.files path escapes skill directory: {raw_path}")
+            elif not file_path.is_file():
+                errors.append(f"{label}.files path does not exist: {raw_path}")
+
+
 def validate_skill(skill_path: str, target: str = "portable") -> tuple[bool, str]:
     skill_root = Path(skill_path)
     errors: list[str] = []
@@ -211,6 +274,7 @@ def validate_skill(skill_path: str, target: str = "portable") -> tuple[bool, str
     if TODO_PATTERN.search(_strip_fenced_code(body)):
         errors.append("unresolved template placeholder outside a code block")
     _validate_bundle_paths(skill_root, body, errors)
+    _validate_evals(skill_root, errors)
     if target in {"portable", "codex"}:
         _validate_openai_yaml(skill_root, errors)
     if errors:
