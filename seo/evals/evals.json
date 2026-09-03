@@ -1,0 +1,16 @@
+{
+  "fixtures": [
+    { "id": "ctr-leak-refresh", "mode": "page-refresh", "expectedAction": "refresh", "requiredEvidence": ["first_party_search"], "mustNotClaim": ["publish completed"] },
+    { "id": "page-two-expansion", "mode": "opportunity", "expectedAction": "expand", "requiredEvidence": ["site_inventory", "first_party_search"], "mustNotClaim": ["create without owner check"] },
+    { "id": "weak-value-fit-ignore", "mode": "opportunity", "expectedAction": "ignore", "requiredEvidence": ["site_inventory"], "mustNotClaim": ["keyword volume proves value fit"] },
+    { "id": "duplicate-intent-consolidation", "mode": "technical", "expectedAction": "consolidate", "requiredEvidence": ["site_inventory"], "mustNotClaim": ["two active canonical owners"] },
+    { "id": "unavailable-search-data", "mode": "page-refresh", "expectedAction": "ignore", "requiredEvidence": ["site_inventory"], "mustNotClaim": ["zero demand", "healthy search data"] },
+    { "id": "unavailable-browser-visibility", "mode": "llm-visibility", "expectedAction": "ignore", "requiredEvidence": ["site_inventory"], "mustNotClaim": ["zero LLM visibility"] },
+    { "id": "stale-provider-crawl", "mode": "technical", "expectedAction": "ignore", "requiredEvidence": ["site_inventory", "rendered_page"], "mustNotClaim": ["current technical health"] },
+    { "id": "search-led-asset-handoff", "mode": "new-asset", "expectedAction": "create", "requiredEvidence": ["site_inventory", "first_party_search"], "mustNotClaim": ["writer bypass"] },
+    { "id": "operating-audit-receipt-gap", "mode": "operating-audit", "expectedAction": "defend", "requiredEvidence": ["site_inventory"], "mustNotClaim": ["public canonical URL", "automation activated"] },
+    { "id": "launch-spike-not-decay", "mode": "opportunity", "expectedAction": "ignore", "requiredEvidence": ["site_inventory", "first_party_search"], "mustNotClaim": ["launch spike is confirmed decay"] },
+    { "id": "56-day-confirmation", "mode": "measurement", "expectedAction": "defend", "requiredEvidence": ["site_inventory", "first_party_search"], "mustNotClaim": ["14-day result is durable learning"] },
+    { "id": "query-classification-is-not-ai-origin", "mode": "page-refresh", "expectedAction": "refresh", "requiredEvidence": ["site_inventory", "first_party_search"], "mustNotClaim": ["query label proves AI-origin traffic", "external model required"] }
+  ]
+}

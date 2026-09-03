@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Decision Layer"
+  short_description: "Make evidence-backed, read-only SEO decisions"
+  default_prompt: "Assess this SEO objective using the smallest justified action and a compact evidence handoff."
+policy:
+  allow_implicit_invocation: true
