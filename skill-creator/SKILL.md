@@ -26,7 +26,7 @@ Use `quick` by default for a clear, low-risk request. Use `create` when ambiguit
 1. Find the existing owner before creating anything. Extend it if it already covers the work.
 2. Preserve authorization boundaries. A skill may prepare a mutation, but require approval immediately before a consequential external action.
 3. Use one canonical body. Do not create separate Claude and Codex copies.
-4. Default shared `SKILL.md` frontmatter to portable fields: `name`, `description`, `license`, `allowed-tools`, and `metadata`. Put Codex UI/policy in `agents/openai.yaml`; use Claude settings for Claude-only visibility.
+4. Default shared `SKILL.md` frontmatter to portable fields: `name`, `description`, `license`, `allowed-tools`, and `metadata`. Put Codex UI/policy in `agents/openai.yaml`; use Claude settings for Claude-only visibility. `agents/openai.yaml` is metadata, not a runnable agent. Do not place agent prompts in a skill's `agents/` directory; define and explicitly wire host-specific subagents outside the portable skill only when they have a real execution role.
 5. Add scripts only for repeated logic or a meaningful deterministic reliability gain. Add references only when they change decisions in a distinct mode.
 6. Validate every changed bundle with:
 

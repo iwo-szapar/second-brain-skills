@@ -54,7 +54,7 @@ For consequential skills, use the evaluation contract before claiming a quality 
 ```text
 skill-creator/
   SKILL.md                 # Entry point and workflow
-  agents/openai.yaml       # Codex display and policy metadata
+  agents/openai.yaml       # Codex metadata only, not a runnable agent
   references/              # Authoring, portability, safety, and evaluation guidance
   scripts/                 # Validation, packaging, and evaluation helpers
   assets/                  # Review-page template
