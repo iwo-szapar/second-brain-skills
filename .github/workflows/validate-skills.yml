@@ -1,0 +1,35 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate-public-skills
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test the portable validator
+        run: python3 -m unittest discover -s skill-creator/tests -p 'test_*.py'
+
+      - name: Validate every public skill bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r skill_file; do
+            skill_dir="$(dirname "$skill_file")"
+            python3 skill-creator/scripts/quick_validate.py "$skill_dir" --target portable
+          done < <(find . -path './.git' -prune -o -name SKILL.md -print | sort)

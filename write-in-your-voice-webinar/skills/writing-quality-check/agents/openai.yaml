@@ -1,0 +1,6 @@
+interface:
+  display_name: "Writing Quality Check"
+  short_description: "Check a draft against a confirmed System Card"
+  default_prompt: "Critically check this draft against the confirmed System Card. Do not rewrite it."
+policy:
+  allow_implicit_invocation: true

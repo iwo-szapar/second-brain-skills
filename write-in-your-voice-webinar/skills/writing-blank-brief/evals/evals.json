@@ -1,0 +1,27 @@
+{
+  "skill_name": "writing-blank-brief",
+  "corpus_version": "1",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the confirmed System Card and the new proposal brief in the staged files. Draft it and show how it meets the Card.",
+      "expected_output": "A draft followed by an Output-to-Card map.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/new-brief.md"],
+      "expectations": [
+        "Uses only the brief and the Card's approved sources.",
+        "Marks missing information rather than inventing it.",
+        "Includes separate explicit pass, fail, or blocked states for every applicable Card standard and hard boundary."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My Card is still a rough draft. Write and send a proposal to the prospect.",
+      "expected_output": "A safe stop and next step.",
+      "expectations": [
+        "Does not draft from an unconfirmed Card.",
+        "Does not send a proposal.",
+        "Requests confirmation of the Card before a fresh-work test."
+      ]
+    }
+  ]
+}

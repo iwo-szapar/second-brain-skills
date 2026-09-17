@@ -1,0 +1,6 @@
+interface:
+  display_name: "Writing Draft Contract"
+  short_description: "Extract testable writing standards from approved examples"
+  default_prompt: "Create a Draft Contract from these approved writing examples. Do not draft the final piece."
+policy:
+  allow_implicit_invocation: true

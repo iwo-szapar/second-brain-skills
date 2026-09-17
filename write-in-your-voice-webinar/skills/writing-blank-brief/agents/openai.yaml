@@ -1,0 +1,6 @@
+interface:
+  display_name: "Writing Blank Brief"
+  short_description: "Test a confirmed System Card on fresh work"
+  default_prompt: "Use this confirmed System Card to draft a new comparable brief and show an Output-to-Card map."
+policy:
+  allow_implicit_invocation: true

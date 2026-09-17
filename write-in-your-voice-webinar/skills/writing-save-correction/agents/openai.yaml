@@ -1,0 +1,6 @@
+interface:
+  display_name: "Writing Save Correction"
+  short_description: "Propose and gate one durable System Card correction"
+  default_prompt: "Turn this quality-check correction into one proposed System Card rule. Wait for my approval before revising."
+policy:
+  allow_implicit_invocation: true
