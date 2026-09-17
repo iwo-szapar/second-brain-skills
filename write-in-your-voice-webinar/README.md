@@ -18,13 +18,13 @@ to the installed directories.
 
 ## The build order
 
-1. [`writing-draft-contract`](./skills/writing-draft-contract/) turns approved
+1. [`writing-draft-contract`](./skills/writing-draft-contract/SKILL.md) turns approved
    examples into a Draft Contract. It does not write the final piece.
-2. [`writing-blank-brief`](./skills/writing-blank-brief/) tests a confirmed
+2. [`writing-blank-brief`](./skills/writing-blank-brief/SKILL.md) tests a confirmed
    System Card on a comparable new brief.
-3. [`writing-quality-check`](./skills/writing-quality-check/) identifies exact
+3. [`writing-quality-check`](./skills/writing-quality-check/SKILL.md) identifies exact
    passes, breaks, unsupported claims, and one high-value correction.
-4. [`writing-save-correction`](./skills/writing-save-correction/) proposes a
+4. [`writing-save-correction`](./skills/writing-save-correction/SKILL.md) proposes a
    single durable rule change, waits for approval, then revises from the
    approved Card.
 
@@ -45,5 +45,5 @@ or treat an AI-proposed rule as permanent. The owner confirms the System Card
 and approves any correction.
 
 After three comparable manual runs, use the repository's
-[`skill-creator`](../skill-creator/) to decide whether the proven workflow
+[`skill-creator`](../skill-creator/SKILL.md) to decide whether the proven workflow
 should become a more specialized skill.
