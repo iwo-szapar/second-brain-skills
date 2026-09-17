@@ -1,5 +1,5 @@
 # Confirmed System Card
 
-Standard 1: open a proposal with the reader's decision. Pass: the first
-sentence names the decision. Fail: the first sentence makes an abstract value
-claim. Do not publish or send the proposal.
+Standard 1: open a proposal with a clear value claim. Pass: the first sentence
+names a benefit. Fail: the first sentence does not name a benefit. Do not
+publish or send the proposal.

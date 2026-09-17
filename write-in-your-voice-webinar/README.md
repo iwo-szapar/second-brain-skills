@@ -26,7 +26,8 @@ to the installed directories.
    passes, breaks, unsupported claims, and one high-value correction.
 4. [`writing-save-correction`](./skills/writing-save-correction/SKILL.md) proposes a
    single durable rule change, waits for approval, then revises from the
-   approved Card.
+   approved Card. The revision is recheck-pending: a change map is not proof
+   that the corrected draft passes.
 
 ## Shared workshop references
 

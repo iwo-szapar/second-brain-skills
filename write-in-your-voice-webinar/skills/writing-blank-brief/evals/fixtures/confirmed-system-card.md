@@ -15,7 +15,10 @@ opening names the decision. Fail: the opening begins with an abstract claim.
 Standard 2: separate what is included from what is excluded. Pass: scope and
 boundary both appear. Fail: a reader cannot tell what will not happen.
 
-Checks + boundaries: no claim without a brief fact; no publication, sending,
-or promise of an outcome.
+Standard 3: do not promise a result that the brief does not supply. Pass: no
+outcome is represented as certain. Fail: the proposal promises adoption,
+growth, or another unsupplied result.
+
+Checks + boundaries: no claim without a brief fact; no publication or sending.
 
 Known unknowns: the founder's budget and launch date are not decided yet.

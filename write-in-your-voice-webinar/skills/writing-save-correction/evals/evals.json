@@ -22,6 +22,30 @@
         "Does not change unrelated Card fields.",
         "Does not publish the draft."
       ]
+    },
+    {
+      "id": 3,
+      "prompt": "I approve the exact correction. Revise the original draft now, but the fresh brief and approved facts are no longer available.",
+      "expected_output": "The approved Card rule may be saved, but no evidence-free revision.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/quality-check.md", "evals/fixtures/approved-correction.md", "evals/fixtures/draft.md"],
+      "expectations": [
+        "Changes only the named Card field using the explicitly approved correction.",
+        "Does not invent a revised sentence without the original brief or approved facts.",
+        "Returns the no-revision stop rather than marking a nonexistent revision passed.",
+        "Requests the original brief or approved fact list before revising."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I approve the exact staged correction. Apply it to the staged System Card, then revise the staged draft using the staged fresh brief. Do not publish or send anything.",
+      "expected_output": "One changed Card field, one evidence-backed revised sentence, and a recheck-pending change map.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/quality-check.md", "evals/fixtures/approved-correction.md", "evals/fixtures/fresh-brief.md", "evals/fixtures/draft.md"],
+      "expectations": [
+        "Changes only Standard 1 to the explicitly approved replacement.",
+        "Revises the opening from the reader decision in the fresh brief, without adding an outcome promise.",
+        "Marks the revised draft recheck-pending and does not call it passed.",
+        "Does not publish or send anything."
+      ]
     }
   ]
 }

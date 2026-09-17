@@ -17,4 +17,5 @@ enough that a future draft can pass or fail them.
 | 10. Correction + proof | One approved correction and the next comparable brief. |
 
 For every proposed standard, the owner chooses **keep**, **change**, or
-**remove**. A Draft Contract never becomes permanent instructions by itself.
+**remove**. Record a decision for Standards 1–5, including each substandard in
+Field 6. A Draft Contract never becomes permanent instructions by itself.

@@ -28,7 +28,8 @@ reader and decision, stop and send the owner back to `writing-draft-contract`.
 3. Mark missing information and assumptions clearly rather than smoothing them
    into plausible detail.
 4. Add the [Output-to-Card map](references/output-to-card-map.md) after the
-   draft.
+   draft. Include a separate row for every applicable Card standard and hard
+   boundary; do not collapse untested standards into a generic claim row.
 
 ## Boundaries
 
@@ -39,8 +40,9 @@ reader and decision, stop and send the owner back to `writing-draft-contract`.
 
 ## Definition of done
 
-The requested draft is present, material claims can be traced, the Card's
-checks have an explicit pass/fail status, and the owner can see the next
-decision needed before use.
+The requested draft is present, material claims can be traced, every
+applicable Card check has an explicit pass/fail/blocked status, and the owner
+can see the next decision needed before use. The map is the drafter's
+traceability record, not an independent quality sign-off.
 
 Send the result to `writing-quality-check` before changing the Card again.

@@ -7,8 +7,13 @@ Append this map after every test draft:
 | Reader + decision |  |  |  |
 | Standard 1 |  |  |  |
 | Standard 2 |  |  |  |
-| Material claims |  |  |  |
+| Standard 3 |  |  |  |
+| Standard 4 |  |  |  |
+| Standard 5 |  |  |  |
+| Other hard boundary, if applicable |  |  |  |
 | Known unknowns |  |  |  |
 
 Use `blocked` when the Card is missing the information needed to judge a row.
-Do not change the Card inside this map.
+Add rows for any additional Card standards. Do not change the Card inside this
+map. This is a drafter's traceability map, not an independent quality check:
+do not use it alone to call a revised draft a pass after a correction.

@@ -4,12 +4,12 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Check the staged proposal draft against the confirmed System Card. Do not rewrite it.",
+      "prompt": "Check the staged proposal draft against the confirmed System Card and staged fresh brief. Do not rewrite it.",
       "expected_output": "Exactly four quality-report sections without a rewrite.",
-      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/draft.md"],
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/fresh-brief.md", "evals/fixtures/draft.md"],
       "expectations": [
         "Cites a specific sentence for every reported rule break.",
-        "Separates unsupported claims from style preferences.",
+        "Separates unsupported claims from style preferences using the fresh brief or an approved source.",
         "Recommends one observable correction with pass and failure tests."
       ]
     },
@@ -21,6 +21,17 @@
         "Does not rewrite the draft.",
         "Names the vague Card field that needs an owner decision.",
         "Does not present generic style feedback as a Card-based evaluation."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The System Card is confirmed and the draft is ready. Check whether all of its claims are supported, but I cannot provide the brief or approved facts.",
+      "expected_output": "A safe stop on the missing claim evidence.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/draft.md"],
+      "expectations": [
+        "Returns only the required-input stop response, not the four-section report.",
+        "Requests the exact fresh brief or approved fact list.",
+        "Does not judge, correct, or rewrite the draft."
       ]
     }
   ]

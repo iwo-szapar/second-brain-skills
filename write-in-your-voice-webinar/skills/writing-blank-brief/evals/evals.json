@@ -10,7 +10,7 @@
       "expectations": [
         "Uses only the brief and the Card's approved sources.",
         "Marks missing information rather than inventing it.",
-        "Includes explicit pass, fail, or blocked states for the Card checks."
+        "Includes separate explicit pass, fail, or blocked states for every applicable Card standard and hard boundary."
       ]
     },
     {
