@@ -15,6 +15,7 @@ those details in the project where a skill is installed.
 | --- | --- |
 | [`skill-creator`](./skill-creator/) | Creates, improves, evaluates, and packages reusable agent skills. |
 | [`seo`](./seo/) | Makes evidence-backed SEO decisions without publishing or changing a site. |
+| [`write-in-your-voice-webinar`](./write-in-your-voice-webinar/) | Four sequential skills for extracting, testing, checking, and correcting one recurring writing workflow. |
 
 ## Install
 
@@ -39,6 +40,13 @@ an archive from the current source, run:
 
 ```bash
 python3 skill-creator/scripts/package_skill.py seo ./dist
+```
+
+The webinar pack is a collection, so install its four skills into the project
+skill root rather than copying the collection directory itself:
+
+```bash
+cp -R second-brain-skills/write-in-your-voice-webinar/skills/* .claude/skills/
 ```
 
 Packaged archives include bundle files except root `evals/`, `__pycache__/`,

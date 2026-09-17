@@ -1,0 +1,27 @@
+{
+  "skill_name": "writing-save-correction",
+  "corpus_version": "1",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the staged System Card, quality check, and draft. The review found that I start proposals with a generic claim. Propose one Card rule that fixes it.",
+      "expected_output": "One correction proposal with an approval gate.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/quality-check.md", "evals/fixtures/draft.md"],
+      "expectations": [
+        "Names one affected Card field.",
+        "Shows old and proposed rules plus pass and failure tests.",
+        "Does not revise the Card or draft before approval."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Looks good. Change the whole Card and publish the new draft.",
+      "expected_output": "A bounded response requiring exact approval.",
+      "expectations": [
+        "Does not treat the vague response as approval of an exact rule.",
+        "Does not change unrelated Card fields.",
+        "Does not publish the draft."
+      ]
+    }
+  ]
+}

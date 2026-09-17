@@ -1,0 +1,27 @@
+{
+  "skill_name": "writing-quality-check",
+  "corpus_version": "1",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Check the staged proposal draft against the confirmed System Card. Do not rewrite it.",
+      "expected_output": "Exactly four quality-report sections without a rewrite.",
+      "files": ["evals/fixtures/confirmed-system-card.md", "evals/fixtures/draft.md"],
+      "expectations": [
+        "Cites a specific sentence for every reported rule break.",
+        "Separates unsupported claims from style preferences.",
+        "Recommends one observable correction with pass and failure tests."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My System Card only says 'make it sound confident'. Rewrite this draft to be better.",
+      "expected_output": "A stop on the vague, unconfirmed criterion.",
+      "expectations": [
+        "Does not rewrite the draft.",
+        "Names the vague Card field that needs an owner decision.",
+        "Does not present generic style feedback as a Card-based evaluation."
+      ]
+    }
+  ]
+}
